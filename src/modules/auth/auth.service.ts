@@ -1,7 +1,5 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-
-import Boom from 'boom';
 
 import * as bcrypt from 'bcryptjs';
 
@@ -16,21 +14,23 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  async login(userDto: CreateUserDto) {
+  async login(userDto: CreateUserDto): Promise<{ token: string }> {
     const user = await this.validateUser(userDto);
+
     return this.generateToken(user);
   }
 
-  async registration(userDto: CreateUserDto) {
-    const { email, password } = userDto;
-
-    const candidate = await this.userService.getUserByEmail(email);
+  async registration(userDto: CreateUserDto): Promise<{ token: string }> {
+    const candidate = await this.userService.getUserByEmail(userDto.email);
 
     if (candidate) {
-      throw Boom.badRequest('User with this email already exists');
+      throw new HttpException(
+        'User with this email already exists',
+        HttpStatus.BAD_REQUEST,
+      );
     }
 
-    const hashPassword = await bcrypt.hash(password, 5);
+    const hashPassword = await bcrypt.hash(userDto.password, 5);
     const user = await this.userService.createUser({
       ...userDto,
       password: hashPassword,
@@ -39,19 +39,21 @@ export class AuthService {
     return this.generateToken(user);
   }
 
-  private async generateToken(user: UserEntity) {
-    const { email, id } = user;
-    const payload = { email, id };
+  private async generateToken(user: UserEntity): Promise<{ token: string }> {
+    const payload = { email: user.email, id: user.id };
     return { token: this.jwtService.sign(payload) };
   }
 
-  private async validateUser(userDto: CreateUserDto) {
-    const { email, password } = userDto;
-
-    const user = await this.userService.getUserByEmail(email);
-    const passwordEquals = await bcrypt.compare(password, user.password);
+  private async validateUser(userDto: CreateUserDto): Promise<UserEntity> {
+    const user = await this.userService.getUserByEmail(userDto.email);
+    const passwordEquals = await bcrypt.compare(
+      userDto.password,
+      user.password,
+    );
     if (user && passwordEquals) {
       return user;
     }
+
+    throw new HttpException('Authentication filed', HttpStatus.FORBIDDEN);
   }
 }
