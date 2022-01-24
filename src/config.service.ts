@@ -21,9 +21,7 @@ export class ConfigService {
     }
 
     const missingFields = Object.keys(fields).filter((field) => {
-      return (
-        fields[field].required && typeof process.env[field] === 'undefined'
-      );
+      return fields[field].required && typeof process.env[field] === 'undefined';
     });
 
     if (missingFields.length) {
@@ -37,9 +35,7 @@ export class ConfigService {
     const value = this.getOrDefault(key);
 
     if (!fields[key]) {
-      throw new Error(
-        `Environment variable '${key}' is not described in fields`,
-      );
+      throw new Error(`Environment variable '${key}' is not described in fields`);
     }
 
     return value;

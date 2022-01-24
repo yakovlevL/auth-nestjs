@@ -9,10 +9,7 @@ import { UserEntity } from '../../entities/user.entity';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private userService: UserService,
-    private jwtService: JwtService,
-  ) {}
+  constructor(private userService: UserService, private jwtService: JwtService) {}
 
   async login(userDto: CreateUserDto): Promise<{ token: string }> {
     const user = await this.validateUser(userDto);
@@ -24,10 +21,7 @@ export class AuthService {
     const candidate = await this.userService.getUserByEmail(userDto.email);
 
     if (candidate) {
-      throw new HttpException(
-        'User with this email already exists',
-        HttpStatus.BAD_REQUEST,
-      );
+      throw new HttpException('User with this email already exists', HttpStatus.BAD_REQUEST);
     }
 
     const hashPassword = await bcrypt.hash(userDto.password, 5);
@@ -46,10 +40,7 @@ export class AuthService {
 
   private async validateUser(userDto: CreateUserDto): Promise<UserEntity> {
     const user = await this.userService.getUserByEmail(userDto.email);
-    const passwordEquals = await bcrypt.compare(
-      userDto.password,
-      user.password,
-    );
+    const passwordEquals = await bcrypt.compare(userDto.password, user.password);
     if (user && passwordEquals) {
       return user;
     }
