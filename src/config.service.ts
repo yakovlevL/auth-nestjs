@@ -11,6 +11,7 @@ const fields = {
   ADMIN_POSTGRES_USER: { required: true },
   ADMIN_POSTGRES_PASSWORD: { required: true },
   JWT_SECRET_KEY: { required: true },
+  JWT_EXPIRED: { required: true },
 };
 
 export class ConfigService {
@@ -83,6 +84,19 @@ export class ConfigService {
       synchronize: true,
       migrationsRun: false,
       ...migrationsConfig,
+    };
+  }
+
+  public getJwtConnection(): { secret: string; signOptions: { expiresIn: string } } {
+
+    const jwtSecret = this.get('JWT_SECRET_KEY');
+    const jwtExpired = this.get('JWT_EXPIRED');
+
+    return {
+      secret: jwtSecret,
+      signOptions: {
+        expiresIn: jwtExpired,
+      },
     };
   }
 

@@ -805,11 +805,6 @@
     "@types/connect" "*"
     "@types/node" "*"
 
-"@types/boom@^7.3.1":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@types/boom/-/boom-7.3.1.tgz#afec3ee9ed56ac22f5dffc45ae33a93fc0f9a481"
-  integrity sha512-9952U+NySPQ35Xr8CU0lHrC3vBuqjh2xmK87l06uW8PN4ePHOqhtjrJV5+e7lqgb4UtzwUHELkbxEXxnPXLlTA==
-
 "@types/connect@*":
   version "3.4.35"
   resolved "https://registry.yarnpkg.com/@types/connect/-/connect-3.4.35.tgz#5fcf6ae445e4021d1fc2219a4873cc73a3bb2ad1"
@@ -822,6 +817,13 @@
   resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.2.tgz#66ad9331f63fe8a3d3d9d8c6e3906dd10f6446e8"
   integrity sha512-t73xJJrvdTjXrn4jLS9VSGRbz0nUY3cl2DMGDU48lKl+HR9dbbjW2A9r3g40VA++mQpy6uuHg33gy7du2BKpog==
 
+"@types/eslint-plugin-prettier@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.0.tgz#451b5e1e5f148a38dc41e9c5b61d45cd2e97af2c"
+  integrity sha512-6/UIuz99F0IvtDez4U3bRwAmN4VKnuw10Ibblf0iZhtNbmbonMSLqs/qqsXrGIAWvjy+vXqYwOljgtLhrETSMg==
+  dependencies:
+    "@types/eslint" "*"
+
 "@types/eslint-scope@^3.7.0":
   version "3.7.3"
   resolved "https://registry.yarnpkg.com/@types/eslint-scope/-/eslint-scope-3.7.3.tgz#125b88504b61e3c8bc6f870882003253005c3224"
@@ -830,7 +832,7 @@
     "@types/eslint" "*"
     "@types/estree" "*"
 
-"@types/eslint@*":
+"@types/eslint@*", "@types/eslint@^8.4.1":
   version "8.4.1"
   resolved "https://registry.yarnpkg.com/@types/eslint/-/eslint-8.4.1.tgz#c48251553e8759db9e656de3efc846954ac32304"
   integrity sha512-GE44+DNEyxxh2Kc6ro/VkIj+9ma0pO0bwv9+uHSyBrikYOHr8zYcdPvnBOp1aw8s+CjRvuSx7CyWqRrNFQ59mA==
@@ -933,7 +935,7 @@
   resolved "https://registry.yarnpkg.com/@types/parse-json/-/parse-json-4.0.0.tgz#2f8bb441434d163b35fb8ffdccd7138927ffb8c0"
   integrity sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==
 
-"@types/prettier@^2.1.5":
+"@types/prettier@^2.1.5", "@types/prettier@^2.4.3":
   version "2.4.3"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.4.3.tgz#a3c65525b91fca7da00ab1a3ac2b5a2a4afbffbf"
   integrity sha512-QzSuZMBuG5u8HqYz01qtMdg/Jfctlnvj1z/lYnIDXs/golxw0fxtRAHd9KrzjR7Yxz1qVeI00o0kiO3PmVdJ9w==
@@ -1537,13 +1539,6 @@ body-parser@1.19.1:
     qs "6.9.6"
     raw-body "2.4.2"
     type-is "~1.6.18"
-
-boom@^7.3.0:
-  version "7.3.0"
-  resolved "https://registry.yarnpkg.com/boom/-/boom-7.3.0.tgz#733a6d956d33b0b1999da3fe6c12996950d017b9"
-  integrity sha512-Swpoyi2t5+GhOEGw8rEsKvTxFLIDiiKoUc2gsoV6Lyr43LHBIzch3k2MvYUs8RTROrIkVJ3Al0TkaOGjnb+B6A==
-  dependencies:
-    hoek "6.x.x"
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2256,7 +2251,7 @@ eslint-visitor-keys@^3.0.0, eslint-visitor-keys@^3.1.0, eslint-visitor-keys@^3.2
   resolved "https://registry.yarnpkg.com/eslint-visitor-keys/-/eslint-visitor-keys-3.2.0.tgz#6fbb166a6798ee5991358bc2daa1ba76cc1254a1"
   integrity sha512-IOzT0X126zn7ALX0dwFiUQEdsfzrm4+ISsQS8nukaJXwEyYKRSnEIIDULYg1mCtGp7UUXgfGl7BIolXREQK+XQ==
 
-eslint@^8.0.1:
+eslint@^8.7.0:
   version "8.7.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.7.0.tgz#22e036842ee5b7cf87b03fe237731675b4d3633c"
   integrity sha512-ifHYzkBGrzS2iDU7KjhCAVMGCvF6M3Xfs8X8b37cgrUlDt6bWRTpRh6T/gtSXv1HJ/BUGgmjvNvOEGu85Iif7w==
@@ -2778,11 +2773,6 @@ highlight.js@^10.7.1:
   version "10.7.3"
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.7.3.tgz#697272e3991356e40c3cac566a74eef681756531"
   integrity sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==
-
-hoek@6.x.x:
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/hoek/-/hoek-6.1.3.tgz#73b7d33952e01fe27a38b0457294b79dd8da242c"
-  integrity sha512-YXXAAhmF9zpQbC7LEcREFtXfGq5K1fmd+4PHkBq8NUqmzW3G+Dq10bI/i0KucLRwss3YYFQ0fSfoxBZYiGUqtQ==
 
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
@@ -4257,7 +4247,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.3.2:
+prettier@^2.5.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.5.1.tgz#fff75fa9d519c54cf0fce328c1017d94546bc56a"
   integrity sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==
