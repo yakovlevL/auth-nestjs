@@ -1,0 +1,13 @@
+version: "3.5"
+
+services:
+  auth:
+    build: .
+    container_name: 'auth'
+    network_mode: 'host'
+    restart: always
+#  client:
+#    build: ../client/
+#    container_name: "client"
+#    ports:
+#      - 4200:80
