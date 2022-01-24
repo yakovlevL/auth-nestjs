@@ -2,9 +2,6 @@
 /dist
 /node_modules
 
-Dockerfile
-docker-compose.yml
-
 .env
 .development.env
 .production.env
