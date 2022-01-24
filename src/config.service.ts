@@ -49,13 +49,13 @@ export class ConfigService {
     addMigrationProperties?: boolean;
     useAdminUser?: boolean;
   } = {}): ConnectionOptions {
-    const MIGRATIONS_DIR = 'src/migrations/**/*.ts';
+    const MIGRATIONS_DIR = 'src/migrations/';
     const ENTITIES_GLOB = __dirname + '/**/*.entity{.ts,.js}';
 
     let migrationsConfig = {};
     if (addMigrationProperties) {
       migrationsConfig = {
-        migrations: ['src/migrations/**/*.ts'],
+        migrations: ['src/migrations/*{.ts,.js}'],
         cli: {
           migrationsDir: MIGRATIONS_DIR,
         },
@@ -79,6 +79,9 @@ export class ConfigService {
       database: this.get('POSTGRES_DB'),
       schema: this.get('POSTGRES_SCHEMA'),
       entities: [ENTITIES_GLOB],
+      dropSchema: false,
+      synchronize: true,
+      migrationsRun: false,
       ...migrationsConfig,
     };
   }
