@@ -10,6 +10,7 @@ const fields = {
   POSTGRES_SCHEMA: { required: true },
   ADMIN_POSTGRES_USER: { required: true },
   ADMIN_POSTGRES_PASSWORD: { required: true },
+  JWT_SECRET_KEY: { required: true },
 };
 
 export class ConfigService {
